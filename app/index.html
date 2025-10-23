@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TicketEase - Ticket Booking App</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="logo">TicketEase</div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Flights</a></li>
+        <li><a href="#">Hotels</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Book Your Trip Easily</h1>
+      <p>Find the best deals for flights and hotels.</p>
+      <a href="#booking" class="btn">Book Now</a>
+    </div>
+  </section>
+
+  <section class="booking" id="booking">
+    <h2>Search Tickets</h2>
+    <form>
+      <div class="form-group">
+        <label>From</label>
+        <input type="text" placeholder="City or Airport">
+      </div>
+      <div class="form-group">
+        <label>To</label>
+        <input type="text" placeholder="City or Airport">
+      </div>
+      <div class="form-group">
+        <label>Departure</label>
+        <input type="date">
+      </div>
+      <div class="form-group">
+        <label>Return</label>
+        <input type="date">
+      </div>
+      <div class="form-group">
+        <label>Passengers</label>
+        <input type="number" min="1" value="1">
+      </div>
+      <button type="submit" class="btn">Search</button>
+    </form>
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <h3>Secure Booking</h3>
+      <p>Safe and reliable ticket bookings for all destinations.</p>
+    </div>
+    <div class="feature">
+      <h3>Best Deals</h3>
+      <p>Compare prices and save big on flights and hotels.</p>
+    </div>
+    <div class="feature">
+      <h3>24/7 Support</h3>
+      <p>We are here to help you anytime, anywhere.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 TicketEase. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
