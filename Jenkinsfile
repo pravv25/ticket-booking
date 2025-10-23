@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'develop', url: 'https://github.com/pravv25/ticket-booking.git'
+                git branch: 'main', url: 'https://github.com/pravv25/ticket-booking.git'
             }
         }
         stage('Build Docker Image') {
