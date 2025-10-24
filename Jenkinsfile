@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         DOCKER_IMAGE = "ticket-app:1.0"
-        KUBECONFIG = "C:\\Program Files\\Jenkins\\config"
+        KUBECONFIG = "C:\\Users\\prava\\.kube\\config"
     }
     stages {
         stage('Checkout') {
@@ -13,14 +13,18 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t %DOCKER_IMAGE% .'
+                script {
+                    bat 'docker build -t %DOCKER_IMAGE% .'
+                }
             }
         }
 
         stage('Deploy to Kubernetes') {
             steps {
-                bat 'kubectl apply -f k8s\\deployment.yaml'
-                bat 'kubectl apply -f k8s\\service.yaml'
+                script {
+                    bat 'kubectl apply -f k8s\\deployment.yaml'
+                    bat 'kubectl apply -f k8s\\service.yaml'
+                }
             }
         }
     }
