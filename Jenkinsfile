@@ -14,7 +14,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    bat 'docker build -t %DOCKER_IMAGE% .'
+                    bat "docker build -t %DOCKER_IMAGE% ."
                 }
             }
         }
@@ -22,10 +22,18 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    bat 'kubectl apply -f k8s\\deployment.yaml'
-                    bat 'kubectl apply -f k8s\\service.yaml'
+                    bat "kubectl apply -f k8s\\deployment.yaml"
+                    bat "kubectl apply -f k8s\\service.yaml"
                 }
             }
+        }
+    }
+    post {
+        success {
+            echo "✅ Pipeline finished successfully! All stages completed."
+        }
+        failure {
+            echo "❌ Pipeline failed. Check logs for errors."
         }
     }
 }

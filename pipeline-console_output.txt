@@ -1,0 +1,125 @@
+Started by user admin
+Obtained Jenkinsfile from git https://github.com/pravv25/ticket-booking.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in C:\ProgramData\Jenkins\.jenkins\workspace\ticket-booking
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > C:\Program Files\Git\cmd\git.exe rev-parse --resolve-git-dir C:\ProgramData\Jenkins\.jenkins\workspace\ticket-booking\.git # timeout=10
+Fetching changes from the remote Git repository
+ > C:\Program Files\Git\cmd\git.exe config remote.origin.url https://github.com/pravv25/ticket-booking.git # timeout=10
+Fetching upstream changes from https://github.com/pravv25/ticket-booking.git
+ > C:\Program Files\Git\cmd\git.exe --version # timeout=10
+ > git --version # 'git version 2.47.0.windows.2'
+ > C:\Program Files\Git\cmd\git.exe fetch --tags --force --progress -- https://github.com/pravv25/ticket-booking.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > C:\Program Files\Git\cmd\git.exe rev-parse "refs/remotes/origin/main^{commit}" # timeout=10
+Checking out Revision cb1449dac3326bd90bb7173b875aac0babdc1af5 (refs/remotes/origin/main)
+ > C:\Program Files\Git\cmd\git.exe config core.sparsecheckout # timeout=10
+ > C:\Program Files\Git\cmd\git.exe checkout -f cb1449dac3326bd90bb7173b875aac0babdc1af5 # timeout=10
+Commit message: "Update Jenkinsfile with Windows KUBECONFIG setup"
+ > C:\Program Files\Git\cmd\git.exe rev-list --no-walk 1f51b65fa699d0d98f6c73f11b9fe88223432a52 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] git
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > C:\Program Files\Git\cmd\git.exe rev-parse --resolve-git-dir C:\ProgramData\Jenkins\.jenkins\workspace\ticket-booking\.git # timeout=10
+Fetching changes from the remote Git repository
+ > C:\Program Files\Git\cmd\git.exe config remote.origin.url https://github.com/pravv25/ticket-booking.git # timeout=10
+Fetching upstream changes from https://github.com/pravv25/ticket-booking.git
+ > C:\Program Files\Git\cmd\git.exe --version # timeout=10
+ > git --version # 'git version 2.47.0.windows.2'
+ > C:\Program Files\Git\cmd\git.exe fetch --tags --force --progress -- https://github.com/pravv25/ticket-booking.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > C:\Program Files\Git\cmd\git.exe rev-parse "refs/remotes/origin/main^{commit}" # timeout=10
+Checking out Revision cb1449dac3326bd90bb7173b875aac0babdc1af5 (refs/remotes/origin/main)
+ > C:\Program Files\Git\cmd\git.exe config core.sparsecheckout # timeout=10
+ > C:\Program Files\Git\cmd\git.exe checkout -f cb1449dac3326bd90bb7173b875aac0babdc1af5 # timeout=10
+ > C:\Program Files\Git\cmd\git.exe branch -a -v --no-abbrev # timeout=10
+ > C:\Program Files\Git\cmd\git.exe branch -D main # timeout=10
+ > C:\Program Files\Git\cmd\git.exe checkout -b main cb1449dac3326bd90bb7173b875aac0babdc1af5 # timeout=10
+Commit message: "Update Jenkinsfile with Windows KUBECONFIG setup"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Docker Image)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\ticket-booking>docker build -t ticket-app:1.0 . 
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 246B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/nginx:alpine
+#2 DONE 2.2s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 92B done
+#4 DONE 0.0s
+
+#5 [1/2] FROM docker.io/library/nginx:alpine@sha256:61e01287e546aac28a3f56839c136b31f590273f3b41187a36f46f6a03bbfe22
+#5 resolve docker.io/library/nginx:alpine@sha256:61e01287e546aac28a3f56839c136b31f590273f3b41187a36f46f6a03bbfe22 0.0s done
+#5 DONE 0.0s
+
+#6 [2/2] COPY app/ /usr/share/nginx/html
+#6 CACHED
+
+#7 exporting to image
+#7 exporting layers done
+#7 exporting manifest sha256:f6ceca144b5c20062bb5922e61b06460508ae825810d514e1e51bcc68e9e7475 0.0s done
+#7 exporting config sha256:60ab4de4fa539133aaf5257b0a76ab4fd060b7130e4164350da93d7b38c0d84e
+#7 exporting config sha256:60ab4de4fa539133aaf5257b0a76ab4fd060b7130e4164350da93d7b38c0d84e 0.0s done
+#7 exporting attestation manifest sha256:4aa59e5450e261405344c8cfda50a5231c54cb9fa995ca3091026ee3499a95ba 0.0s done
+#7 exporting manifest list sha256:2138444a69c26df627de50e9fe5d3d1bb6c921453d399e7952d8bb02a021e035 0.0s done
+#7 naming to docker.io/library/ticket-app:1.0
+#7 naming to docker.io/library/ticket-app:1.0 done
+#7 unpacking to docker.io/library/ticket-app:1.0 0.1s done
+#7 DONE 0.2s
+WARNING: current commit information was not captured by the build: git was not found in the system: exec: "git.exe": executable file not found in %PATH%
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy to Kubernetes)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\ticket-booking>kubectl apply -f k8s\deployment.yaml 
+deployment.apps/ticket-app-deployment unchanged
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\ticket-booking>kubectl apply -f k8s\service.yaml 
+service/ticket-app-service unchanged
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

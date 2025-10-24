@@ -5,8 +5,8 @@ metadata:
 spec:
   selector:
     app: ticket-app
-  type: NodePort
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
+  type: LoadBalancer
